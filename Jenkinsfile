@@ -22,8 +22,8 @@ environment {
 
         stage("build & SonarQube analysis") {  
             steps {
-                echo 'build & SonarQube analysis...'
-               withSonarQubeEnv('SonarQube') {
+                echo 'build & sonarQube analysis...'
+               withSonarQubeEnv('sonarQube') {
                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DevObed_geolocation -X'
                }
             }
