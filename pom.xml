@@ -19,6 +19,10 @@
 		<sonar.organization>geolocation</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
+	<properties>
+  <sonar.organization>devobed</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 
 <dependencies>
 		<dependency>
