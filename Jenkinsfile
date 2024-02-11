@@ -72,7 +72,7 @@ environment {
         stage("pushing the Backend helm charts to nexus"){
             steps{
                 script{
-                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'nexus-pass', usernameVariable: 'jenkins-user', passwordVariable: 'docker_pass']]) {
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'Hollywood1234@', usernameVariable: 'devobed', passwordVariable: 'docker_pass']]) {
                             def mavenPom = readMavenPom file: 'pom.xml'
                             POM_VERSION = "${mavenPom.version}"
                             sh "echo ${POM_VERSION}"
