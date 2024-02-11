@@ -7,14 +7,14 @@ pipeline {
   maven 'M2_HOME'
 }
 environment {
-    registry = '076892551558.dkr.ecr.us-east-1.amazonaws.com/jenkins'
-    registryCredential = 'jenkins-ecr'
+    registry = '180361900311.dkr.ecr.us-east-1.amazonaws.com/jenkins'
+    registryCredential = 'aws-credentials'
     dockerimage = ''
 
      NEXUS_VERSION = "nexus3"
      NEXUS_PROTOCOL = "http"
-     NEXUS_URL = "139.177.192.139:8081"
-     NEXUS_REPOSITORY = "utrains-nexus-pipeline"
+     NEXUS_URL = "3.91.180.182:8081"
+     NEXUS_REPOSITORY = "geo-pipeline"
      NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
      POM_VERSION = ''
 }
@@ -24,7 +24,7 @@ environment {
             steps {
                 echo 'build & SonarQube analysis...'
                withSonarQubeEnv('SonarServer') {
-                   sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kserge2001_geolocation -X'
+                   sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DevObed_geolocation -X'
                }
             }
           }
@@ -79,7 +79,7 @@ environment {
                             POM_VERSION = "${mavenPom.version}"
                             sh "echo ${POM_VERSION}"
                             sh "tar -czvf  app-${POM_VERSION}.tgz app/"
-                            sh "curl -u jenkins-user:$docker_pass http://139.177.192.139:8081/repository/geolocation/ --upload-file app-${POM_VERSION}.tgz -v"  
+                            sh "curl -u jenkins-user:$docker_pass http://ec2-3-91-180-182.compute-1.amazonaws.com:8081/repository/geo-pipeline/ --upload-file app-${POM_VERSION}.tgz -v"  
                     }
                 } 
             }
